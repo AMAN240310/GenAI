@@ -81,5 +81,27 @@ async function loginUserController(req,res) {
     })
 }
 
+async function logoutuisr(req,res) {
+     const token = req.cookis.token
+     if( token ){
+        await toeknblacklist.create({token})
+     }
+     res.clearCookie("token")
+     res.stauts(200).json({
+        message: "user Logged out succesfully"
+     })
+}
 
-module.exports = {registerUserController, loginUserController}
+async function getMEcontoller(req, res ) {
+    const user = await userModel.findById(req.user.id)
+    res.stauts(200).json({
+        message:" user detila fethched successfully ",
+        user:{
+            id:user._id,
+            username:user.username,
+         email:user.email     
+           }
+    })
+}
+
+module.exports = {registerUserController, loginUserController, logoutuisr , getMEcontoller}
