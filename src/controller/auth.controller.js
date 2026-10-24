@@ -1,9 +1,9 @@
-const useModel = require("../model/user.model")
+const userModel = require("../model/user.model")
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 
 async function registerUserController(req, res){
-    const {username,email,password} = registerUserController.body
+    const {username,email,password} = req.body
 
     if( !username || !email || !password ){
         return res.status(400).json({
@@ -11,7 +11,7 @@ async function registerUserController(req, res){
         })
         }
         const isUserExiests = await userModel.findOne({
-            $or:[{username} , {eamil}]
+            $or:[{username} , {email}]
         })
         if( isUserExiests ){
             return res.status(400).json({
@@ -30,7 +30,7 @@ async function registerUserController(req, res){
         const token = jwt.sign(
          {id: user._id ,username:user.username},
          process.env.JWT_SECRET,
-         {expireIn:"1d"}   
+         {expiresIn :"1d"}   
         )
 
         res.cookie("token", token)
@@ -82,9 +82,9 @@ async function loginUserController(req,res) {
 }
 
 async function logoutuisr(req,res) {
-     const token = req.cookis.token
+     const token = req.cookies.token
      if( token ){
-        await toeknblacklist.create({token})
+        await tokenblcaklist.create({token})
      }
      res.clearCookie("token")
      res.stauts(200).json({
@@ -94,7 +94,7 @@ async function logoutuisr(req,res) {
 
 async function getMEcontoller(req, res ) {
     const user = await userModel.findById(req.user.id)
-    res.stauts(200).json({
+    res.status(200).json({
         message:" user detila fethched successfully ",
         user:{
             id:user._id,

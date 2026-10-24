@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const mongoose = required('mongoose')
 
 const blacklistToken = new mongoose.Schema({
   token: {
@@ -14,4 +14,4 @@ const blacklistToken = new mongoose.Schema({
 
 const tokenblcaklist = mongoose.model("blaklist ", blacklistToken)
 
-model.export = tokenblcaklist
+module.export = tokenblcaklist
