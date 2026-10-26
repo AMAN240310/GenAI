@@ -12,9 +12,9 @@ authRouter.post("/register", authcontroller.registerUserController )
 
 
 
-authRouter.post("/api/auth/api/login", authcontroller.loginUserController)
+authRouter.post("/login", authcontroller.loginUserController)
 
-authRouter.get("/logout" , authcontroller.logoutuisr)
+authRouter.post("/logout", authcontroller.logoutuisr)
 
 authRouter.get("/get-me", authMiddleware.authUser, authcontroller.getMEcontoller)
 
