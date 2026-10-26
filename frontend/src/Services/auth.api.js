@@ -1,7 +1,7 @@
 import axios from "axios"
 
 axios.create({
-    baseURL:"http://localhost:5000/api/auth",
+    baseURL:"http://localhost:3000/api/auth",
     withCredentials:true
 })
 
@@ -27,7 +27,7 @@ export async function login( {email,password} ){
         const response = await axios.post('/login', {email,password },
              {
                   // withCredentials:true;
-                 email,passord
+                 email,password
              },
           
          )   
@@ -39,7 +39,7 @@ export async function login( {email,password} ){
 export async function Logout() {
        try{
         const response  = await axios.post('/logout',{
-            wihtCredentials:true
+            withCredentials:true
         })
         return response.data
        }catch(err){
@@ -49,7 +49,7 @@ export async function Logout() {
 
 export async function getMe(){
     try{
-        const response = await axios.get('/me',{
+        const response = await axios.get('/get-me',{
             withCredentials:true
         })
         return response.data

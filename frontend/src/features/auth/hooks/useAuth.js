@@ -1,5 +1,5 @@
 import {useContext} from 'react'
-import {login , register , logout , getMe} from "../../../Services/auth.api"
+import {login , register , Logout , getMe} from "../../../Services/auth.api"
 import { AuthContext } from '../auth.context'
 
 export const useAuth = () =>{
@@ -10,15 +10,15 @@ export const useAuth = () =>{
         setLoading(true)
         try{
 
-             await login({email,password})
-        const data = await login({email,password})
+          //   await login({email,password})
+         const data = await login({email,password})
 
-        setUser(data.user)  
-  } catch(err){
-    console.log(err)
-  }finally{
+         setUser(data.user)  
+       } catch(err){
+             console.log(err)
+         }finally{
             setLoading(false)
-  }
+           }
 
 
     }
@@ -42,13 +42,13 @@ export const useAuth = () =>{
         setLoading(true)
         try{
 
-            const data = await logout()
-            setUser(null) 
-       }catch(err){
-        console.log(err);
-       }finally{
-              setLoading(false)  
-       }
+        const data = await Logout()
+          setUser(null) 
+        }catch(err){
+         console.log(err);
+        }finally{
+               setLoading(false)  
+        }
 
 
     }

@@ -87,7 +87,7 @@ async function logoutuisr(req,res) {
         await tokenblcaklist.create({token})
      }
      res.clearCookie("token")
-     res.stauts(200).json({
+     res.status(200).json({
         message: "user Logged out succesfully"
      })
 }

@@ -5,7 +5,7 @@ async function authUser(req, res , next ){
 
     if(!token){
         return res.status(400).json({
-            messge: "token is not provided"
+            message: "token is not provided"
         })
     }
     const istokenblacklist = await tokenblacklistModel.findOne({
